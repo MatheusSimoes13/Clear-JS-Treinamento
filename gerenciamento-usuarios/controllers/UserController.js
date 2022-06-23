@@ -18,14 +18,13 @@ class UserController {
     onSubmit(){
 
         this.formEl.addEventListener("submit", event => {
-
+                    
             event.preventDefault();
 
             let btn = this.formEl.querySelector("[type=submit]");
             btn.disabled = true;
-
-            let values = this.getValues();
-
+         
+            let values = this.getValues(this.formEl);
             if (!values){
                 btn.disabled = false;
                 return false;
@@ -110,7 +109,7 @@ class UserController {
         
         });
     
-        if(isValid){
+        if(!isValid){
             return false;
         }
 
@@ -148,7 +147,22 @@ class UserController {
             `;
 
         tr.querySelector(".btn-edit").addEventListener("click",e=>{
-            console.log(tr);
+            
+            let json = JSON.parse(tr.dataset.user);
+            let form = document.querySelector("#form-user-update")
+            for(let name in json){
+
+               let field = form.querySelector("[name=" + name.replace(" ","") +"]");
+
+                
+
+               if(field){
+                    if(field.type == 'file') continue;
+                field.value = json[name];
+               }
+
+            }
+
             this.showPanelUpdate();
         });
 
