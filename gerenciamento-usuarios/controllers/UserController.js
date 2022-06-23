@@ -3,6 +3,7 @@ class UserController {
     constructor(formId, tableId){
 
         this.formEl = document.getElementById(formId);
+        // this.formUpdateEl = document.getElementById(formIdUpdate);
         this.tableEl = document.getElementById(tableId);
 
         this.onSubmit();
@@ -44,6 +45,7 @@ class UserController {
             }
             );
 
+            this.formEl.reset();
         });
         
     }
@@ -149,16 +151,32 @@ class UserController {
         tr.querySelector(".btn-edit").addEventListener("click",e=>{
             
             let json = JSON.parse(tr.dataset.user);
-            let form = document.querySelector("#form-user-update")
+            let form = document.querySelector("#form-user-update");
+
             for(let name in json){
 
-               let field = form.querySelector("[name=" + name.replace(" ","") +"]");
+                let field = form.querySelector("[name=" + name.replace("_","") +"]");
 
-                
+                if(field){
 
-               if(field){
-                    if(field.type == 'file') continue;
-                field.value = json[name];
+                    switch(field.type){
+                        case 'file':
+                            continue;
+                            break;
+                        case 'radio':
+                            field = form.querySelector("[name=" + name.replace("_", "")+ "][value="+json[name]+"]");
+                            console.log(field)
+                            field.checked = true;
+                            break;
+                        case 'checkbox':
+                            field.checked = json[name];
+                            break;
+
+                        default:
+                            field.value = json[name];
+
+                    }
+
                }
 
             }
