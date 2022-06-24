@@ -183,7 +183,7 @@ class UserController {
 
     selectAll(){
 
-        let users = this.getUsersStorage();
+        let users = User.getUsersStorage();
 
         users.forEach(dataUser=>{
 
@@ -207,7 +207,9 @@ class UserController {
     }
 
     getTr(dataUser, tr = null){
-        if (tr=== null )tr = document.createElement('tr');
+        if (tr === null) tr = document.createElement('tr');
+
+        tr.dataset.user = JSON.stringify(dataUser);
 
         tr.innerHTML = `
         <tr>
