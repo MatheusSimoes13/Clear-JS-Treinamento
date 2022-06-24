@@ -8,6 +8,7 @@ class UserController {
 
         this.onSubmit();
         this.onEdit();
+        this.selectAll();
     }
 
     onEdit(){
@@ -91,6 +92,8 @@ class UserController {
             this.getPhoto(this.formEl).then(
             (content)=>{
                 values.photo = content;
+
+                this.insert(values);
 
                 this.addLine(values);
 
@@ -185,6 +188,45 @@ class UserController {
 
     }
 
+    getUsersStorage(){
+
+        let users = [];
+
+        if(localStorage.getItem("user")){
+            users = JSON.parse(localStorage.getItem("user"));
+        }
+
+        return users;
+
+    }
+
+    selectAll(){
+
+        let users = this.getUsersStorage();
+
+        users.forEach(dataUser=>{
+
+            let user = new User();
+
+            user.loadFromJSON(dataUser);
+            
+            this.addLine(user);
+
+        })
+
+    }
+
+    insert(data){
+
+        let users = this.getUsersStorage();
+
+        users.push(data);
+
+        // sessionStorage.setItem("user", JSON.stringify(users));
+        localStorage.setItem("user", JSON.stringify(users));
+        
+    }
+
     addLine(dataUser){
 
         let tr = document.createElement('tr');
@@ -200,7 +242,7 @@ class UserController {
                 <td>${Utils.dateFormat(dataUser.register)}</td>
                 <td>
                     <button type="button" class="btn btn-primary btn-edit btn-xs btn-flat">Editar</button>
-                    <button type="button" class="btn btn-danger btn-xs btn-flat">Excluir</button>
+                    <button type="button" class="btn btn-danger btn-delete btn-xs btn-flat">Excluir</button>
                 </td>
             </tr>
             `;
@@ -213,6 +255,15 @@ class UserController {
     }
 
     addEventsTR(tr){
+
+        tr.querySelector(".btn-delete").addEventListener("click",e=>{
+
+            if(confirm("Deseja realmente excluir?")){
+                tr.remove();
+                this.updateCount();
+            }
+
+        });
 
         tr.querySelector(".btn-edit").addEventListener("click",e=>{
             
