@@ -67,7 +67,7 @@ loadFromJSON(json){
                 this[name] = new Date(json[name]);
                 break;
             default:
-                this[name] = json[name];
+                if (name.substring(0, 1)=== '_') this[name] = json[name];
         }
 
         
@@ -76,71 +76,54 @@ loadFromJSON(json){
 
  static getUsersStorage(){
 
-    let users = [];
-
-    if(localStorage.getItem("user")){
-        users = JSON.parse(localStorage.getItem("user"));
-    }
-
-    return users;
+    return HttpRequest.get('/users');
 
 }
 
-getNewId(){
+toJSON(){
+    
+    let json = {};
 
-    let usersID = parseInt(localStorage.getItem("usersID"));
+    Object.keys(this).forEach(key => {
+        if(this[key] !== undefined) json[key] = this[key];
+    });
 
-    if(!usersID > 0) window.id = 0;
-
-    usersID++;
-
-    localStorage.setItem("usersID", usersID);
-
-    return usersID;
-
+    return json;
 }
 
 
 save(){
 
-    let users = User.getUsersStorage();
+    return new Promise((resolve, reject)=>{
 
-    if(this.id > 0){
-        users.map(u=>{
-            
-            if(u._id == this.id){
-                Object.assign(u, this);
-            }
+        let promise;
 
-            return u;
-        })
+        if(this.id){
 
+            promise = HttpRequest.put(`/users/${this.id}`, this.toJSON());
 
-    } else {
-        this._id = this.getNewId();
+        } else {
 
-        users.push(this);
+            promise = HttpRequest.post(`/users`, this.toJSON());
+        }
 
+        promise.then(data => {
+                this.loadFromJSON(data);
 
-    }
+                resolve(this);
+        }).catch(e =>{
+            reject(e);
+        });
 
-    localStorage.setItem("user", JSON.stringify(users));
+    });
 
 }
 
     remove(){
-        let users = User.getUsersStorage();
 
-        users.forEach((userData, index)=>{
-            if(this._id == userData._id){
-        
-                users.splice(index, 1);
+        return HttpRequest.delete(`/users/${this.id}`);
 
-            }
 
-        });
-
-        localStorage.setItem("users",JSON.stringify(users));
     }
 
 }
