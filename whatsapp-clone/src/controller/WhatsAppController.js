@@ -213,6 +213,8 @@ class WhatsAppController{
             this.el.panelCamera.css({
                 'height' : 'calc(100% - 120px);'
             });
+
+            this._camera = new CameraController(this.el.videoCamera);
             
         });
 
@@ -396,11 +398,8 @@ class WhatsAppController{
 
     closeMenuAttach(e){
 
-        ()=>{
             document.removeEventListener('click',this.closeMenuAttach);
             this.el.menuAttach.removeClass('open');
-            
-        }
 
     }
 
