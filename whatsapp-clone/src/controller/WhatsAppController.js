@@ -370,6 +370,12 @@ export class WhatsAppController{
 
             this._microphoneController = new MicrophoneController();
 
+            this._microphoneController.on('play',audio=>{
+
+                console.log('A');
+
+            });
+
         });
 
         this.el.btnCancelMicrophone.on('click',e=>{
