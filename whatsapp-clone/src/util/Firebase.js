@@ -22,7 +22,7 @@ export class Firebase {
             measurementId: "G-SDVX1SKWN4"
             };
 
-        if(!this.initialized){
+        if(!window._initializedFirebase){
 
             firebase.initializeApp(firebaseConfig);
 
@@ -30,7 +30,7 @@ export class Firebase {
                 timestampsInSnapshots: true
             })
 
-            this._initialized = true;
+            window._initializedFirebase = true;
         }
 
     }
