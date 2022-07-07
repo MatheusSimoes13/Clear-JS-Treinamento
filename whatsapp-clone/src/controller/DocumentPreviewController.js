@@ -17,13 +17,14 @@ export class DocumentPreviewController {
 
             let reader = new FileReader();
 
-            switch (this._file.type) {
+            switch(this._file.type){
 
                 case 'image/png':
                 case 'image/jpeg':
                 case 'image/jpg':
                 case 'image/gif':
-                reader.onload = e => {
+        
+                reader.onload = e =>{
 
                     s({
                         src: reader.result,
@@ -32,20 +33,17 @@ export class DocumentPreviewController {
 
                 }
                 reader.onerror = e =>{
-
                     f(e);
-
                 }
                 reader.readAsDataURL(this._file);
                 break;
 
                 case 'application/pdf':
+                    reader.onload = e =>{
 
-                    reader.onload = e => {
-
-                        pdfjsLib.getDocument(new Uint8Array(reader.result)).then(pdf=>{
-
-                            pdf.getPage(1).then(page => {
+                        pdfjsLib.getDocument(new Uint8Array(reader.result)).then(pdf =>{
+                        
+                            pdf.getPage(1).then(page=>{
 
                                 let viewport = page.getViewport(1);
 
@@ -58,13 +56,14 @@ export class DocumentPreviewController {
                                 page.render({
                                     canvasContext,
                                     viewport
+
                                 }).then(()=>{
-                                
+
                                     let _s = (pdf.numPages > 1) ? 's' : '';
 
                                     s({
                                         src: canvas.toDataURL('image/png'),
-                                        info: `${pdf.numPages} páginas${_s}`
+                                        info: `${pdf.numPages}páginas ${_s}`
                                     });
 
                                 }).catch(err=>{
@@ -84,9 +83,9 @@ export class DocumentPreviewController {
                     reader.readAsArrayBuffer(this._file);
 
                 break;
-
+                
                 default:
-                    f();
+
             }
 
         });

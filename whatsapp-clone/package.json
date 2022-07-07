@@ -11,8 +11,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "pdfjs-dist": "^2.0.489",
-    "webpack": "^3.1.0",
-    "webpack-dev-server": "^2.5.1"
+    "firebase": "5.0.4",
+    "webpack": "3.1.0",
+    "pdfjs-dist": "2.0.489",
+    "webpack-dev-server": "2.5.1"
   }
 }

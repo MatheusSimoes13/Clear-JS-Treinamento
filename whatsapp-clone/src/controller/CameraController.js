@@ -18,6 +18,7 @@ export class CameraController{
 
     }
 
+        
     stop(){
             
         this._stream.getTracks().forEach(track=>{
@@ -30,15 +31,14 @@ export class CameraController{
 
         let canvas = document.createElement('canvas');
 
-        canvas.setAttribute('height', this._videoEl.videoHeight);
-        canvas.setAttribute('width', this._videoEl.videoWidth);
-    
+        canvas.setAttribute('height',this._videoEl.videoHeight);
+        canvas.setAttribute('width',this._videoEl.videoWidth);
+
         let context = canvas.getContext('2d');
 
-        context.drawImage(this._videoEl, 0, 0, canvas.width, canvas.height);
+        context.drawImage(this._videoEl, 0 ,0 ,canvas.width, canvas.height);
 
         return canvas.toDataURL(mimeType);
-
     }
 
 }
