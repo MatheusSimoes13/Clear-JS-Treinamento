@@ -10,7 +10,8 @@ router.get('/', function(req, res, next) {
 
     res.render('index', {
       title: 'Restaurante saboroso!',
-      menus: results
+      menus: results,
+      isHome: true
     });
 
   });
