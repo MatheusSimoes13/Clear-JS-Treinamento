@@ -155,10 +155,11 @@ let formCreate = document.querySelector('#modal-create form');
         fetch("/admin/menus", {
             method:'POST',
             body: formCreateData
-        }).then(response => response.json())
+        })
+        .then(response => response.json())
         .then(json => {
 
-            console.log('JSON', json);
+            window.location.reload();
 
         });
 
