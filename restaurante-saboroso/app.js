@@ -10,7 +10,6 @@ var path = require('path');
 
 var indexRouter = require('./routes/index');
 var adminRouter = require('./routes/admin');
-// const IncomingForm = require('formidable/formidable');
 
 var app = express();
 
@@ -18,7 +17,7 @@ app.use(function(req, res, next){
 
     if(req.method === 'POST'){
 
-        var form = formidable.IncomingForm({
+        var form = new formidable.IncomingForm({
             uploadDir: path.join(__dirname, "/public/images"),
             keepExtensions:true
 
