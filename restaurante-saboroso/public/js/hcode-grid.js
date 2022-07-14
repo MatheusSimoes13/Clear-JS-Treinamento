@@ -8,6 +8,31 @@ class HcodeGrid{
                 $('#modal-update').modal('show');
     
             },
+            afterDeleteClick:(e)=>{
+        
+                window.location.reload();
+    
+            },
+            afterFormCreate: (e)=>{
+                
+                window.location.reload();
+
+            },
+            afterFormUpdate: (e)=>{
+                
+                window.location.reload();
+
+            },
+            afterFormCreateError: (e)=>{
+                
+                alert('Não foi possivel enviar o formulario');
+
+            },
+            afterFormUpdateError: (e)=>{
+                
+                alert('Não foi possivel enviar o formulario');
+
+            }
         }, configs.listeners)
 
         this.options = Object.assign({}, {
@@ -29,11 +54,11 @@ class HcodeGrid{
 
             this.formCreate.save().then(json => {
 
-                window.location.reload();
+                this.fireEvent('afterFormCreate');
 
             }).catch(err=>{
 
-                console.log(err);
+                this.fireEvent('afterFormCreateError');
 
             });
 
@@ -41,11 +66,12 @@ class HcodeGrid{
 
             this.formUpdate.save().then(json => {
 
-                window.location.reload();
+                this.fireEvent('afterFormUpdate');
+                
 
             }).catch(err=>{
 
-                console.log(err);
+                this.fireEvent('afterFormUpdateError');
 
                 });
         
@@ -57,6 +83,18 @@ class HcodeGrid{
 
     }
 
+    getTrData(e){
+
+        let tr = e.path.find(el => {
+
+            return(el.tagName.toUpperCase() === 'TR');
+
+        });
+
+        return JSON.parse(tr.dataset.row);
+
+    }
+
     initButtons(){
 
         [...document.querySelectorAll(this.options.btnUpdate)].forEach(btn=>{
@@ -65,13 +103,7 @@ class HcodeGrid{
 
             this.fireEvent('beforeUpdateClick', [e]);
 
-            let tr = e.path.find(el => {
-
-                return(el.tagName.toUpperCase() === 'TR');
-
-            });
-
-            let data = JSON.parse(tr.dataset.row);
+            let data = this.getTrData(e);
 
             for(let name in data){
 
@@ -100,13 +132,9 @@ class HcodeGrid{
 
 btn.addEventListener('click', e=>{
 
-    let tr = e.path.find(el => {
+    this.fireEvent('beforeDeleteClick');
 
-    return(el.tagName.toUpperCase() === 'TR');
-
-    });
-
-    let data = JSON.parse(tr.dataset.row);
+    let data = this.getTrData(e);
 
     if(confirm(eval('`' + this.options.deleteMsg + '`'))){
 
@@ -115,7 +143,7 @@ btn.addEventListener('click', e=>{
         })
         .then(response => response.json())
         .then(json =>{ 
-            window.location.reload();
+            this.fireEvent('afterDeleteClick');
         });
 
     }
