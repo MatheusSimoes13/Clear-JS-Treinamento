@@ -209,6 +209,22 @@
 new HcodeGrid({
     deleteUrl:'/admin/reservations/${data.id}',
     deleteMessage:'Deseja realmente excluir a reserva de ${data.name}?',
+    onUpdateLoad: (form, name, data) => {
+
+    let input = form.querySelector(`[name=${name}]`);
+
+    switch(name) {
+
+        case 'date':
+            if(input) input.value = moment(data[name]).format('YYYY-MM-DD')
+            console.log();
+        break;
+        default:
+            if(input) input.value = data[name];
+
+    }
+
+}
 
 });
 
