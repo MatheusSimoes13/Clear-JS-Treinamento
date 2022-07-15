@@ -32,7 +32,7 @@ module.exports = {
                 [ 
                     fields.title,
                     fields.description,
-                    fields,price
+                    fields.price
                 ];
             
             if(files.photo.name){
