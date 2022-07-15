@@ -6,6 +6,7 @@ var reservations = require('./../inc/reservations');
 var contacts = require('./../inc/contacts');
 var emails = require('./../inc/emails');
 var moment = require('moment');
+var Pagination = require('./../inc/Pagination');
 var router = express.Router();
 
 moment.locale('pt-BR');
