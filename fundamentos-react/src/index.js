@@ -1,9 +1,12 @@
 import React from "react"
 import ReactDOM from "react-dom"
+import './index.css'
+import First from './components/basics/First'
 
-const tag = <div>Olá react</div>
 
 const el = document.getElementById("root")
 ReactDOM.render(
-    { tag }
+    <div>
+        <First></First>
+    </div>
 , el)
