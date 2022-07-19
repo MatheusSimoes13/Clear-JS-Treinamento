@@ -2,6 +2,9 @@ import './App.css'
 import React from "react"
 
 import Card from "./components/layout/Card"
+
+import Family from './components/basics/Family'
+import FamilyMember from './components/basics/FamilyMember'
 import Random from "./components/basics/Random"
 import First from './components/basics/First'
 import WithParams from "./components/basics/WithParams"
@@ -12,7 +15,13 @@ export default _ => (
         <div className="App">
 
             <div className="Cards">
-
+                <Card titulo="Componente com filhos" color="#080">
+                    <Family surname="Simões">
+                        <FamilyMember name="Matheus"></FamilyMember>
+                        <FamilyMember name="Ruf" ></FamilyMember>
+                        <FamilyMember name="João"></FamilyMember>
+                    </Family>
+                </Card>
                 <Card titulo="Aleatório" color="#080">
                     <Random min={1} max={60}/>
                 </Card>
