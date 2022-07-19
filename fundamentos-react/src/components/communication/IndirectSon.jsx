@@ -2,6 +2,9 @@ import React from "react"
 
 export default props => {
     const callback = props.whenClick
+    const min = 50
+    const max = 70
+    const generateAge = () => parseInt(Math.random() * (20)) + 50
     return (
         <div>
             <div>
@@ -9,7 +12,7 @@ export default props => {
             </div>
             <button onClick={
                 _ => {
-                    callback('João',50, true)
+                    callback('João',generateAge(), true)
                 }
             }>Fornecer informações</button>
         </div>

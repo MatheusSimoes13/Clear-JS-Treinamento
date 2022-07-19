@@ -1,23 +1,22 @@
-import React from "react"
+import React, { useState } from "react"
 import IndirectSon from "./IndirectSon"
 
 export default props => {
-    let name = 'default'
-    let age = 0
-    let nerd = false
+    const [name, setName] = useState('default')
+    const [age, setAge] = useState(0)
+    const [nerd, setNerd] = useState(false)
 
     function giveInfo(nameParam, ageParam, nerdParam){
-        name = nameParam
-        age = ageParam
-        nerd = nerdParam
-        console.log(name,age,nerd)
+        setName(nameParam)
+        setAge(ageParam)
+        setNerd(nerdParam)
     }
 
     return (
         <div>
             <div>
-                <span>{name}</span>
-                <span>{age}</span>
+                <span>{name} </span>
+                <span>{age} </span>
                 <span>{nerd ? 'Verdadeiro' : 'Falso'}</span>
             </div>
 
