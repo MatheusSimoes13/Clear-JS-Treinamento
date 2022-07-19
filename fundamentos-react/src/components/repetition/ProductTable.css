@@ -1,0 +1,12 @@
+.ProductTable table{
+    width: 100%;
+}
+
+.ProductTable th{
+    background-color: darkcyan;
+    color: #fff;
+}
+
+.ProductTable .Par{
+    background-color: #ddd;
+}
