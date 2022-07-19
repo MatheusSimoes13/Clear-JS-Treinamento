@@ -3,6 +3,8 @@ import React from "react"
 
 import Card from "./components/layout/Card"
 
+import UserInfo from './components/conditional/UserInfo'
+import EvenOrOdd from './components/conditional/EvenOrOdd'
 import ProductTable from './components/repetition/ProductTable'
 import StudentList from './components/repetition/StudentList'
 import Family from './components/basics/Family'
@@ -17,6 +19,11 @@ export default _ => (
         <div className="App">
 
             <div className="Cards">
+                <Card titulo="Renderização condicional" color="#5500FF">
+                    <EvenOrOdd number={20}></EvenOrOdd>
+                    <UserInfo user={{name:'Matheus'}}></UserInfo>
+                    <UserInfo user={{email:'matheus.ruff@hotmail.com'}}></UserInfo>
+                </Card>
                 <Card titulo="Repetição produtos" color="#55FFF3">
                     <ProductTable></ProductTable>
                 </Card>
