@@ -3,6 +3,8 @@ import React from "react"
 
 import Card from "./components/layout/Card"
 
+import IndirectFather from './components/communication/IndirectFather'
+import DirectFather from './components/communication/DirectFather'
 import UserInfo from './components/conditional/UserInfo'
 import EvenOrOdd from './components/conditional/EvenOrOdd'
 import ProductTable from './components/repetition/ProductTable'
@@ -19,6 +21,12 @@ export default _ => (
         <div className="App">
 
             <div className="Cards">
+            <Card titulo="Comunicação indireta" color="#AABBFF">
+                    <IndirectFather></IndirectFather>
+                </Card>
+                <Card titulo="Comunicação direta" color="#AA00FF">
+                    <DirectFather></DirectFather>
+                </Card>
                 <Card titulo="Renderização condicional" color="#5500FF">
                     <EvenOrOdd number={20}></EvenOrOdd>
                     <UserInfo user={{name:'Matheus'}}></UserInfo>
