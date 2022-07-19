@@ -3,6 +3,7 @@ import React from "react"
 
 import Card from "./components/layout/Card"
 
+import Input from './components/form/Input'
 import IndirectFather from './components/communication/IndirectFather'
 import DirectFather from './components/communication/DirectFather'
 import UserInfo from './components/conditional/UserInfo'
@@ -21,7 +22,10 @@ export default _ => (
         <div className="App">
 
             <div className="Cards">
-            <Card titulo="Comunicação indireta" color="#AABBFF">
+                <Card titulo="Componente controlado " color="#AFAFAF">
+                    <Input></Input>
+                </Card>
+                <Card titulo="Comunicação indireta" color="#AABBFF">
                     <IndirectFather></IndirectFather>
                 </Card>
                 <Card titulo="Comunicação direta" color="#AA00FF">
