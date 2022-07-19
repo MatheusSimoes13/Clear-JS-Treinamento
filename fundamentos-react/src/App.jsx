@@ -3,6 +3,7 @@ import React from "react"
 
 import Card from "./components/layout/Card"
 
+import Counter from './components/counter/Counter'
 import Input from './components/form/Input'
 import IndirectFather from './components/communication/IndirectFather'
 import DirectFather from './components/communication/DirectFather'
@@ -22,6 +23,9 @@ export default _ => (
         <div className="App">
 
             <div className="Cards">
+                <Card titulo="Counter" color="#AFAFAF">
+                    <Counter initNumber={10} initStep={1}></Counter>
+                </Card>
                 <Card titulo="Componente controlado " color="#AFAFAF">
                     <Input></Input>
                 </Card>
