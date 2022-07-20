@@ -3,6 +3,7 @@ import React from "react"
 
 import Card from "./components/layout/Card"
 
+import Mega from './megasena/Mega'
 import Counter from './components/counter/Counter'
 import Input from './components/form/Input'
 import IndirectFather from './components/communication/IndirectFather'
@@ -23,6 +24,9 @@ export default _ => (
         <div className="App">
 
             <div className="Cards">
+                <Card titulo="Mega da virada" color="#0FAF00">
+                    <Mega></Mega>
+                </Card>
                 <Card titulo="Counter" color="#AFAFAF">
                     <Counter initNumber={10} initStep={1}></Counter>
                 </Card>
