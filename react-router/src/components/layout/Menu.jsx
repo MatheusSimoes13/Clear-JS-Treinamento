@@ -8,10 +8,15 @@ const Menu = props => (
             <ul>
                 <li>
                     <Link to="/">Início</Link>
-                    <a href="/">Início</a>
                 </li>
                 <li>
-                    <a href="/">Sobre</a>
+                    <Link to="/param">Início</Link>
+                </li>
+                <li>
+                    <Link to="/param">Início</Link>
+                </li>
+                <li>
+                    <Link to="/param">Início</Link>
                 </li>
             </ul>
         </nav>
