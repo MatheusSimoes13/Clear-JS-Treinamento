@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import ReactPaginate from 'react-paginate'
 import PageTitle from '../../components/layout/PageTitle'
 import SectionTitle from '../../components/layout/SectionTitle'
 import { useCounter } from '../../hooks/useCounter'
 import { useFetch } from '../../hooks/useFetch'
 
 const UseRef = (props) => {
-    
+
     const [count, inc, dec] = useCounter(10)
     const url = 'http://files.cod3r.com.br/curso-react/estados.json'
     const response = useFetch(url)
@@ -32,6 +33,7 @@ const UseRef = (props) => {
             <div className="center">
                 <ul>
                     {!response.loading ? showStates(response.data) : false}
+                
                 </ul>
             </div>
         </div>
