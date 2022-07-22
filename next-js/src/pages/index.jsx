@@ -1,4 +1,3 @@
-import Link from "next/link"
 import Navegador from "../components/Navegador"
 
 export default function Inicio(){
@@ -9,6 +8,7 @@ export default function Inicio(){
             alignItems: 'center'
         }}>
             <Navegador texto="Exemplo" destino="/exemplo"/>
+            <Navegador texto="Navegacao" destino="/navegacao" cor="#A0FA0F" />
         </div>
     )
 }
