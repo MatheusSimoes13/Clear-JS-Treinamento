@@ -1,3 +1,11 @@
+import Link from "next/link"
+
 export default function Inicio(){
-    return <h1>Tasd</h1>
+    return (
+        <div>
+            <Link href="/exemplo">
+                top
+            </Link>
+        </div>
+    )
 }

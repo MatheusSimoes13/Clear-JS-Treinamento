@@ -1,7 +1,13 @@
 import Cabecalho from "../components/Cabecalho";
+import Layout from "../components/Layout";
 
 export default function Exemplo(){
     return (
-        <Cabecalho />
+        <>
+            <Layout>
+                <Cabecalho titulo="Clear"/>
+            </Layout>
+
+        </>
     )
 }
