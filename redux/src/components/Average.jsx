@@ -1,9 +1,9 @@
 import React from 'react'
-import { connect } from 'react'
+import { connect } from 'react-redux'
 
 import Card from './Card'
 
-function Media(props) {
+function Average(props) {
     const {min, max} = props
     return (
         <Card title="Média dos números" green>
@@ -24,4 +24,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps)(Media)
+export default connect(mapStateToProps)(Average)

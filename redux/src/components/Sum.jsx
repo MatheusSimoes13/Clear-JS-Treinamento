@@ -10,7 +10,7 @@ function Sum(props){
             <div>
                 <span>
                     <span>Resultado:</span>
-                    <strong>{ max + min }</strong>
+                    <strong>{+min + max}</strong>
                 </span>
             </div>
         </Card>
@@ -24,4 +24,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect()(Sum)
+export default connect(mapStateToProps)(Sum)
