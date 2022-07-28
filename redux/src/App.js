@@ -1,23 +1,23 @@
 import logo from './logo.svg';
 import './App.css';
+import Interval from './components/Interval';
+import Average from './components/Average';
+import Sum from './components/Sum';
+import Sortition from './components/Sortition';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Exercício React-Redux (Simples)</h1>
+      <div className='linha'>
+        <Interval></Interval>
+      </div>
+      <div className='linha'>
+        <Average></Average>
+        <Sum></Sum>
+        <Sortition></Sortition>
+      </div>
+
     </div>
   );
 }
